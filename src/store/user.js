@@ -12,21 +12,21 @@ export const useUserStore = defineStore('user', {
   }),
   actions: {
     setUserData(data) {
-      // Assuming the response data has fields that we want to store in the state.
+      // Map the login response fields correctly
       this.userData = {
         ...data,
-        clientID: data.clientID, 
-        firstName: data.firstname,
-        lastName: data.lastname,
-        email: data.email,
-        companyName: data.companyName,
-        address: data.address,
-        phone: data.phone,
-        city: data.city,
-        state: data.stateName,
-        zip: data.zip,
-        birthday: data.birthday,
-        roleId: data.roleid,
+        clientID: data.clientLoginId,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.emailId,
+        companyName: data.companyName || '',
+        address: data.address || '',
+        phone: data.phone || '',
+        city: data.city || '',
+        state: data.stateName || '',
+        zip: data.zip || '',
+        birthday: data.birthday || '',
+        roleId: data.roleid || [],
       };
 
       this.token = data.token;

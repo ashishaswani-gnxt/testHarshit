@@ -162,31 +162,34 @@
   import { useRouter } from 'vue-router';
   import { useUserStore } from '@/store/user';
   
-  const form = ref({
-    firstName: '',
-    lastName: '',
-    email: '',
-    company: '',
-    companyType: '',
-    address: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    phoneNumber: '',
-    birthday: ''
-  });
-  
   const companyTypes = ['1', '2', '3', '4', '5'];
   
   const userStore = useUserStore();
   const router = useRouter();
+  
+  // Debug the store data
+  console.log("User store data:", userStore.userData);
+  
+  const form = ref({
+    firstName: userStore.userData?.firstName || '',
+    lastName: userStore.userData?.lastName || '',
+    email: userStore.userData?.email || '',
+    company: userStore.userData?.companyName || '',
+    companyType: userStore.userData?.companyType || '',
+    address: userStore.userData?.address || '',
+    city: userStore.userData?.city || '',
+    state: userStore.userData?.state || '',
+    zipCode: userStore.userData?.zip || '',
+    phoneNumber: userStore.userData?.phone || '',
+    birthday: userStore.userData?.birthday || ''
+  });
   
   const getInitials = (firstName, lastName) => {
     return `${firstName.charAt(0)}${lastName ? lastName.charAt(0) : ''}`;
   };
   
   const cancel = () => {
-    router.push('/update'); // This is optional, it can navigate to any page you want.
+    router.push('/grid'); // This is optional, it can navigate to any page you want.
   };
   
   const updateProfile = async () => {
