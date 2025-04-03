@@ -1,5 +1,11 @@
 <template>
   <div class="login-page">
+    <div class="illustration">
+      <div class="illustration-content">
+        <img src="https://i.pinimg.com/736x/69/84/3e/69843e99dbfc7b273f8508aa23cf4f60.jpg" alt="Login illustration" class="illustration-image" />
+      </div>
+    </div>
+    
     <div class="login-container">
       <div class="tabs">
         <div class="tab active">Login</div>
@@ -41,12 +47,6 @@
       
       <p v-if="loginError" class="error">{{ loginError }}</p>
     </div>
-    
-    <!-- <div class="illustration">
-      <div class="illustration-content">
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-U2x1hjNZHERrVFHrYRNqxyIeFXxIJp.png" alt="Login illustration" class="illustration-image" />
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -72,7 +72,7 @@ export default {
           password: password.value,
         })
 
-        // If login is successful, set user data in store
+       
         if (response.data) {
           userStore.setUserData(response.data)
           localStorage.setItem("token", response.data.token);
@@ -98,19 +98,46 @@ export default {
 <style scoped>
 .login-page {
   display: flex;
-  justify-content: flex-end;
   min-height: 100vh;
   background-color: #ffffff;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+.illustration {
+  flex: 1;
+  background-color: #f0f9f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px;
+}
+
+.illustration-content {
+  position: relative;
+  width: 100%;
+  /* height: 100%; */
+  max-width: 600px;
+}
+
+.illustration-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
 .login-container {
   flex: 1;
   max-width: 450px;
-  padding: 40px;
+  padding: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #ffffff;
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.05);
 }
 
 .tabs {
@@ -212,28 +239,6 @@ input:focus {
   text-align: center;
 }
 
-.illustration {
-  flex: 1;
-  background-color: #f0f9f7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.illustration-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.illustration-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 @media (max-width: 768px) {
   .login-page {
     flex-direction: column;
@@ -242,10 +247,12 @@ input:focus {
   .login-container {
     max-width: 100%;
     padding: 30px 20px;
+    box-shadow: none;
   }
   
   .illustration {
-    display: none;
+    padding: 20px;
+    min-height: 300px;
   }
 }
 </style>

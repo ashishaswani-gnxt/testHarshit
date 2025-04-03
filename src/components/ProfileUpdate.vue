@@ -191,7 +191,7 @@
   
   const updateProfile = async () => {
     const requestBody = {
-      clientID: 2, // Use the clientID from the store
+      clientID: 2,
       firstname: form.value.firstName,
       lastname: form.value.lastName,
       email: form.value.email,
@@ -200,13 +200,13 @@
       city: form.value.city,
       stateName: form.value.state,
       zip: form.value.zipCode,
-      imagepath: 'abcd', // You can update this with an image path if applicable
+      imagepath: 'abcd',
       companyName: form.value.company,
-      birthday: form.value.birthday, // Add the date of birth if required
-      roleid: ['2'], // Assign the role ID(s) as needed
+      birthday: form.value.birthday,
+      roleid: ['2'],
     };
     const token = localStorage.getItem("token");
-    console.log("token from",token) // Get the token from the store
+    console.log("token from",token)
     try {
       const response = await axios.post(
         'http://smarterlead-001-site2.otempurl.com/api/Admin/UpdateProfile',

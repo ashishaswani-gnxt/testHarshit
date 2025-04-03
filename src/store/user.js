@@ -6,7 +6,9 @@ export const useUserStore = defineStore('user', {
     password: '',
     userData: null,
     isAuthenticated: false,
-    token: ''
+    token: '',
+    leads: [],
+    isLoading: false
   }),
   actions: {
     setUserData(data) {
@@ -36,6 +38,7 @@ export const useUserStore = defineStore('user', {
       this.userData = null;
       this.isAuthenticated = false;
       this.token = '';
+      this.leads = [];
     },
 
     updateUserData(updatedData) {
@@ -46,5 +49,13 @@ export const useUserStore = defineStore('user', {
         };
       }
     },
+
+    setLeads(leads) {
+      this.leads = leads;
+    },
+
+    setLoading(status) {
+      this.isLoading = status;
+    }
   },
 });
