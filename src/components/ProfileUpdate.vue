@@ -94,7 +94,7 @@
                 <input 
                   id="birthday" 
                   v-model="form.birthday" 
-                  type="text" 
+                  type="date" 
                   required
                   placeholder="Enter your birthday"
                 />
